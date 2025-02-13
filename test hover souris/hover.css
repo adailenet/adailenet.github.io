@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'Baskervville';
+    src: url(/fonts/Baskervville-Italic.otf);
+    font-style: italic;
+  }
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+    background-size: 400% 400%;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+h1 {
+    display: flex;
+  justify-content: center;
+  font-family: 'Baskervville';
+  font-style: italic;
+  font-size: 60px;
+}
+
+.color-changing-text {
+    animation: colorShift 5s infinite alternate;
+  }
+  @keyframes colorShift {
+    0% {
+      color: #F7CFD8;
+    }
+    50% {
+      color: #F4F8D3;
+    }
+    100% {
+      color: #A6F1E0;
+    }
+  }
+
+#texteInteractif {
+    font-size: 2rem;
+    cursor: none;
+}
+
+#curseurImage {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    width: 100px;
+    height: 100px;
+    display: none;
+}
+
