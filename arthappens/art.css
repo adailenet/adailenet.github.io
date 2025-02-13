@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.captcha-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 10px;
+    margin: 20px 0;
+}
+
+.grid img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 3px solid transparent;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.grid img.selected {
+    border: 3px solid #00bfff;
+}
+
+button {
+    background-color: #00bfff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+
+button:hover {
+    background-color: #008cba;
+}
+
+#resultMessage {
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.falling-image {
+    position: absolute;
+    width: 40px; /* Taille des petites images */
+    height: 40px;
+    pointer-events: none; /* Pour ne pas bloquer les clics */
+    opacity: 1;
+    transition: transform 6s linear, opacity 6s ease-out;
+}
