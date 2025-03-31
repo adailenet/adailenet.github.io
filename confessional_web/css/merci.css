@@ -1,0 +1,30 @@
+@font-face {
+    font-family: "murmure";
+    src: url(./fonts/le-murmure.otf);
+    font-style: normal;
+}
+@font-face {
+    font-family: "instrument";
+    src: url(./fonts/InstrumentSerif-Regular.ttf);
+    font-style: normal;
+}
+@font-face {
+    font-family: "instrument";
+    src: url(./fonts/InstrumentSerif-Italic.ttf);
+    font-style: italic;
+}
+
+body {
+    margin: 20px;
+    padding: 20px;
+    background-color: #BF3131;
+}
+ 
+p {
+    font-family: "instrument";
+    font-style: italic;
+    font-size: 2em;
+    color: #7D0A0A;
+
+    text-align: center;
+}

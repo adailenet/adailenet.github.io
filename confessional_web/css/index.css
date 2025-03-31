@@ -1,0 +1,104 @@
+@font-face {
+    font-family: "murmure";
+    src: url(../fonts/le-murmure.otf);
+    font-style: normal;
+}
+@font-face {
+    font-family: "instrument";
+    src: url(../fonts/InstrumentSerif-Regular.ttf);
+    font-style: normal;
+}
+@font-face {
+    font-family: "instrument";
+    src: url(../fonts/InstrumentSerif-Italic.ttf);
+    font-style: italic;
+}
+
+/*
+@media screen and (min-width: 601px) { 
+    h2 {
+      font-size: 80px;
+    }
+  }
+  
+  
+  @media screen and (max-width: 600px) { 
+    h2 {
+      font-size: 30px;
+    }
+  }*/
+
+body {
+   /* margin: 20px;*/
+    padding: 20px;
+    background-color: #BF3131;
+}
+
+
+
+img {
+    width: 20%;
+    position: relative;
+    top: 0.5vh;
+    
+    display: block;
+    margin: auto;
+    margin-bottom: 1vh;
+}
+
+img:hover {
+    cursor:pointer;
+}
+
+h2 {
+    font-family: "murmure";
+    font-size: 8vw;
+    text-align: center;
+    margin-bottom: 2VH;
+    margin-top:1vh;
+    color: #7D0A0A;
+}
+
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #c54545;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.form-container input, .form-container textarea, .form-container button {
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.question {
+    font-family: "instrument";
+    font-style: normal;
+    font-size: 1.2em;
+    color: #7D0A0A;
+}
+
+.form-container button {
+    width: 30%;
+    display: block;
+    margin: auto;
+
+    font-family: "instrument";
+    font-style: normal;
+    font-size: 1em;
+    background-color: #EAD196;
+    color: #c54545;
+    border: none;
+    cursor: pointer;
+}
+.form-container button:hover {
+    background-color: #D2BC87;
+    color: #EEEEEE;
+}

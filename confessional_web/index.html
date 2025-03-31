@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>confessional.web</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+    <div class="head">
+        <a href="./what.html"><img src="./img/fenetre.png" alt="fenetre"></a>
+        <h2>confess yourself</h2>
+    </div>
+
+    <div class="form-container">
+        <form action="https://formsubmit.co/confessional.web@gmail.com" method="POST">
+            <!-- Champ pour le nom de l'utilisateur -->
+            <label for="name" class="question">your name or pseudonym :</label>
+            <input type="text" id="name" name="name" required>
+        
+            <!-- Champ pour le message de l'utilisateur -->
+            <label for="message" class="question">your confession :</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        
+            <!-- Redirection après l'envoi -->
+            <input type="hidden" name="_next" value="https://votre-site.com/merci.html"> <!-- Page de remerciement -->
+            <input type="hidden" name="_subject" value="Nouveau message de votre site"> <!-- Sujet de l'email -->
+        
+            <!-- Bouton d'envoi -->
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+
+</body>
+    
+</html>
