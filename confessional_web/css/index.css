@@ -28,7 +28,7 @@
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 780px) {
     body {
         padding: 0.8rem;
     }
