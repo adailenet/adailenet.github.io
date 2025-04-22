@@ -14,19 +14,47 @@
     font-style: italic;
 }
 
-/*
-@media screen and (min-width: 601px) { 
-    h2 {
-      font-size: 80px;
+@media screen and (max-width: 1024px) {
+    .form-container {
+        padding: 1rem;
     }
-  }
-  
-  
-  @media screen and (max-width: 600px) { 
+
     h2 {
-      font-size: 30px;
+        font-size: 4rem;
     }
-  }*/
+
+    #fenetre {
+        width: 200px; /* Maintient une bonne taille sur tablette */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 0.8rem;
+    }
+    
+    h2 {
+        font-size: 3rem;
+    }
+    
+    #fenetre {
+        width: 150px; /* Taille maintenue relativement grande sur mobile */
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    body {
+        padding: 0.8rem;
+    }
+    
+    h2 {
+        font-size: 5rem;
+    }
+    
+    #fenetre {
+        width: 250px; /* Taille maintenue relativement grande sur mobile */
+    }
+}
 
 body {
    /* margin: 20px;*/
