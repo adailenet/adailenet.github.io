@@ -29,10 +29,10 @@ function scan() {
 
 function handleCode(data) {
   // Affiche une image selon le contenu du code
-  if (data === "symbole1") {
-    result.innerHTML = '<img src="img/arbre.jpg">';
+  if (data === "TEST") {
+    result.innerHTML = '<img src="src/img/arbre.jpg">';
   } else if (data === "symbole2") {
-    result.innerHTML = '<img src="img/portail.jpg">';
+    result.innerHTML = '<img src="src/img/portail.jpg">';
   } else {
     result.innerHTML = `<p>Code inconnu : ${data}</p>`;
   }
