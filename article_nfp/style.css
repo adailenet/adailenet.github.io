@@ -1,0 +1,83 @@
+@font-face {
+    font-family: "Bluu";
+    src: url(src/typo/BluuNext-Bold.otf);
+}
+@font-face {
+    font-family: "Fauna";
+    src: url(src/typo/FaunaOne-Regular.ttf);
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #F0E491;
+  background: radial-gradient(circle,rgba(240, 228, 145, 1) 0%, rgba(132, 153, 79, 1) 100%);
+  color: #222;
+  line-height: 1.7;
+  padding: 2rem;
+}
+
+h1 {
+  font-family: "Bluu";
+  font-size: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+a {
+  color: #31694E;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #658C58;
+  text-decoration: underline;
+}
+
+h5 {
+    margin-top: 10rem;
+}
+
+ul {
+  padding-left: 1.5rem;
+  list-style-type: none;
+}
+
+main {
+  font-family: "Fauna";
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+img {
+  max-width: 80%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+}
+
+/* Barre de lecture */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 10px;
+  background: linear-gradient(90deg, #7ac142, #b6e388);
+  width: 0%;
+  z-index: 1000;
+  transition: width 0.15s ease-out;
+}
+
+#flower-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+  mix-blend-mode: screen; /* ou "screen", "overlay", selon ton fond */
+  z-index: -1;
+  pointer-events: none;
+}
