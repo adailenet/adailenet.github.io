@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio – Adèle Bouvard</title>
+  <style>
+    :root{
+      --red:#e60000;
+      --text:#0b0b0b;
+      --muted:#666;
+      --gap:2rem;
+      --max-img-height:420px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color:var(--text);
+      display:flex;
+      min-height:100vh;
+      flex-direction:column;
+    }
+
+    header{
+      padding:1.2rem 2rem;
+      font-weight:800;
+      font-size:2.2rem;
+    }
+    header .sub{font-weight:700; font-size:1rem; display:block; margin-top:.4rem}
+
+    main{
+      flex:1;
+      display:flex;
+      gap:var(--gap);
+      padding:1.5rem 2rem;
+      align-items:flex-start;
+    }
+
+    /* NAV / LIST */
+    nav{ min-width:300px; }
+    #project-list{ list-style:none; padding:0; margin:0; }
+    #project-list li{
+      padding:0.35rem 0.6rem;
+      margin-bottom:0.8rem;
+      font-weight:700;
+      cursor:pointer;
+      position:relative;
+      max-width:400px;
+      transition: color .25s, background .25s;
+      overflow:hidden;
+    }
+    /* pill derrière l'item actif */
+    #project-list li.active::before{
+      content:"";
+      position:absolute;
+      left:-12%;
+      top:50%;
+      transform:translateY(-50%);
+      width:100%;
+      height:2em;
+      background:var(--red);
+      filter: blur(8px);
+      border-radius:999px;
+      z-index:-1;
+      transition: all .35s cubic-bezier(.4,1.4,.6,1);
+      opacity: 0.7;
+    }
+    /* emphasised look for active text */
+    #project-list li.active{ color:#000; }
+
+    #project-list li:hover:not(.active){
+      background:rgba(230,0,0,0.07);
+      color:var(--red);
+    }
+
+    /* Desktop gallery (à droite) */
+    .gallery-desktop{
+      flex:1;
+      max-width:760px;
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    .gd-image-wrap{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      min-height: calc(var(--max-img-height) - 40px);
+    }
+    .gd-image-wrap img{
+      max-width:100%;
+      max-height:var(--max-img-height);
+      object-fit:contain;
+      display:block;
+      background:#fff;
+      transition: opacity .4s cubic-bezier(.4,1.4,.6,1);
+      opacity:1;
+    }
+    .gd-image-wrap img.fade{
+      opacity:0;
+    }
+    .gd-controls{
+      position:absolute;
+      left:10px;
+      right:10px;
+      top:50%;
+      transform:translateY(-50%);
+      display:flex;
+      justify-content:space-between;
+      pointer-events:none;
+    }
+    .gd-controls button{
+      pointer-events:auto;
+      background:none;
+      border:none;
+      font-size:2.6rem;
+      line-height:1;
+      cursor:pointer;
+      padding:.4rem .8rem;
+      color:var(--text);
+      transition: color .2s, transform .2s;
+    }
+    .gd-controls button:hover{
+      color:var(--red);
+      transform:scale(1.18);
+    }
+    .gallery-caption{
+      margin-top:1rem;
+      text-align:left;
+      width:100%;
+      max-width:700px;
+      color:var(--muted);
+      font-size:.9rem;
+      line-height:1.4;
+    }
+
+    button:focus{ outline:2px solid rgba(0,0,0,0.12); border-radius:4px }
+    a{ color:inherit }
+
+    footer{
+      padding:1rem 2rem;
+      font-size:.9rem;
+      text-align:center;
+      border-top:1px solid #eee;
+    }
+    footer a{ color:inherit; text-decoration:none; font-weight:700 }
+
+    /* --- Mobile behaviour --- */
+    /* On mobile on cache la galerie de droite et on affiche un panneau mobile insérable */
+    .mobile-panel{ display:none; } /* shown only on small screens via media query */
+
+     /* --- Ajustements responsive améliorés --- */
+  @media (max-width: 768px){
+    main{
+      flex-direction:column;
+      padding:1rem;
+      gap:1rem;
+    }
+    nav{ width:100%; }
+
+    #project-list li{
+      padding:0.8rem 0.9rem;
+      font-size:1.05rem;
+      line-height:1.3;
+      border-radius:6px;
+      transition: .2s;
+    }
+    #project-list li:active{
+      background:rgba(0,0,0,0.05);
+    }
+
+    /* repositionnement du pill */
+    #project-list li.active::before{
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:90%;
+      filter:blur(10px);
+    }
+
+    .gallery-desktop{ display:none; }
+
+    .mobile-panel{
+      display:block;
+      width:100%;
+      border-radius:12px;
+      margin:1rem 0 1.5rem;
+      padding:0.8rem;
+      background:#fff;
+      box-shadow:0 2px 10px rgba(0,0,0,0.06);
+      transition:all .25s ease;
+      opacity:0;
+      transform:scale(0.97);
+      transition:opacity .25s, transform .25s;
+    }
+    .mobile-panel[style*="display: block"]{
+      opacity:1;
+      transform:scale(1);
+    }
+    .mobile-panel .mp-image{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:240px;
+      overflow:hidden;
+    }
+    .mobile-panel img{
+      width:100%;
+      height:auto;
+      max-height:380px;
+      object-fit:contain;
+      border-radius:6px;
+      transition:transform .2s;
+    }
+    .mp-controls{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:.5rem;
+      padding:0 .4rem;
+    }
+    .mp-controls button{
+      background:none;
+      border:none;
+      font-size:1.8rem;
+      cursor:pointer;
+      line-height:1;
+      color:#000;
+      transition:opacity .2s;
+    }
+    .mp-controls button:active{ opacity:0.6; }
+
+    .mp-caption{
+      margin-top:.7rem;
+      color:var(--muted);
+      font-size:.95rem;
+      line-height:1.45;
+      text-align:left;
+    }
+
+    footer{
+      font-size:.85rem;
+      padding:1rem 0;
+      text-align:center;
+    }
+  }
+</style>
+
+    
+  </style>
+</head>
+<body>
+  <header>
+    portfolio
+    <span class="sub">ADÈLE BOUVARD</span>
+  </header>
+
+  <main>
+    <nav aria-label="Liste des projets">
+      <ul id="project-list">
+        <li class="active" data-project="typo" tabindex="0">recherches typographiques</li>
+        <li data-project="dessins" tabindex="0">galerie de dessins</li>
+        <li data-project="collines" tabindex="0">collines de vagues [micro-édition]</li>
+        <li data-project="venus" tabindex="0">vénus préhistorique, de l’objet érotique <br> à l’auto-portrait [micro-édition]</li>
+        <li data-project="cyborg" tabindex="0">le cyborg s’émancipe</li>
+        <li data-project="asso" tabindex="0">travail de communication pour la maison d’édition l’Association</li>
+      </ul>
+    </nav>
+
+    <!-- Desktop gallery (visible uniquement sur écran large) -->
+    <section class="gallery-desktop" aria-live="polite">
+      <div class="gd-image-wrap">
+        <div class="gd-controls" aria-hidden="false">
+          <button id="gd-prev" aria-label="Image précédente">&#x276E;</button>
+          <button id="gd-next" aria-label="Image suivante">&#x276F;</button>
+        </div>
+          <div id="gd-media">
+            <img id="gd-image" src="https://via.placeholder.com/900x420?text=racines" alt="">
+          </div>      
+        </div>
+
+      <div class="gallery-caption" id="gd-caption">
+        Recherches Typographiques, janvier 2025, papier, calques, feutres, plume, encre.
+        <br><br>
+        Recherches de formes typographiques autour du mot « racines ». Les lettres sont dessinées sur calque puis scannées et retouchées sur Photoshop.
+      </div>
+    </section>
+
+    <!-- Mobile panel (sera inséré dynamiquement après l'item cliqué) -->
+    <div id="mobile-panel" class="mobile-panel" style="display:none;" aria-hidden="true">
+      <div class="mp-image">
+        <button id="mp-prev" aria-label="Précédent" style="display:none"></button>
+        <div id="mp-media">
+          <img id="mp-image" src="" alt="">
+      </div>
+        <button id="mp-next" aria-label="Suivant" style="display:none"></button>
+      </div>
+      <div class="mp-controls" style="display:flex;gap:8px;justify-content:space-between;align-items:center">
+        <button id="mp-prev-btn" aria-label="Image précédente">&#x276E;</button>
+        <div style="flex:1"></div>
+        <button id="mp-next-btn" aria-label="Image suivante">&#x276F;</button>
+      </div>
+      <div class="mp-caption" id="mp-caption"></div>
+    </div>
+
+  </main>
+
+  <footer>
+    instagram : <a href="https://instagram.com/ve1eda" target="_blank" rel="noreferrer">@ve1eda</a> |
+    mail : <a href="mailto:adelebvd@gmail.com">adelebvd@gmail.com</a>
+  </footer>
+
+  <script>
+    /* Données de projets (remplacez les URLs par vos images réelles) */
+    const projects = {
+      typo: {
+        images: [
+          "src/img/typo1.jpg",
+          "src/img/typo2.jpg",
+          "src/img/typo3.jpg",
+          "src/img/typo4.jpg",
+          "src/img/typo5.jpg",
+        ],
+        text: "Recherches Typographiques, janvier 2025, papier, calques, feutres, plume, encre.<br><br>Recherches de formes typographiques autour du mot « racines ». Les lettres sont dessinées sur calque puis scannées et retouchées sur Photoshop."
+      },
+      dessins: {
+        images: [
+          "src/img/dessin1.jpg",
+          "src/img/dessin2.jpg",
+          "src/img/dessin3.jpg",
+          "src/img/dessin4.jpg",
+          "src/img/dessin5.jpg",
+          "src/img/AUTOPORTRAIT.jpg",
+        ],
+        text: "Galerie de dessins — étude de compositions et d’expressions graphiques variées."
+      },
+      collines: {
+        images: [
+          "src/img/collines1.jpg",
+          "src/img/collines2.jpg",  
+          "src/img/collines3.jpg",
+          "src/img/collines4.jpg",
+          "src/img/collines5.jpg"
+        ],
+        text: "Collines de vagues, 8 x 22 cm, résine, branches, papier, mouchoirs, papier imprimé, encre, ficelle, 2023.<br><br> Ce texte est autobiographique et dévoile mes souvenirs d’enfance, notamment le souvenir des territoires sur lesquels j’ai grandi. Ces fragments d’images, de son, de sens, sont ceux qu’ils me restent et me construisent et j’ai souhaité les mettre à l’honneur dans ce texte poétique. La résine, qui est un matériau transparent, pourrait représenter ma mémoire, et ces éléments figés dans la matières, mes souvenirs. La technique de reliure copte m’a permis de lier le papier et la résine."
+      },
+      venus: {
+        images: [
+          "src/img/venus1.jpg",
+          "src/img/venus2.jpg",
+          "src/img/venus3.jpg",
+          "src/img/venus4.jpg",
+          "src/img/venus5.jpg",
+          "src/img/venus6.jpg"
+        ],
+        text: "Vénus préhistorique, de l'objet érotique à l'auto-portrait, édition, indesign, photoshop, hiver 2024 <br><br> Cette micro-édition retrace la manière dont les chercheur·euses ont pu percevoir les Vénus préhistoriques depuis le XIXe siècle, passant de l’objet érotique à un auto-portrait pour les femmes enceintes. Le format est très simple, composé de quatre pages et contenant un plus petit livret d’images pour illustrer les propos."
+      },
+      cyborg: {
+        images: [
+          "src/img/cyborg.jpg",
+          "src/img/cyborg2.jpg",
+          "src/img/cyborg3.jpg",
+        ],
+        text: "Le cyborg s’émancipe, hiver 2024, article, site web (html, css et javascript) <br><br> Article de recherche autour du livre de Donna Haraway, le manifeste cyborg. Le site web est codé en HTML, CSS et JavaScript et peut être consulté en ligne à cette adresse : <a href='https://adailenet.github.io/cyborg_haraway/' target='_blank' rel='noreferrer'>https://adailenet.github.io/cyborg_haraway/</a>"
+      },
+      asso: {
+        images: [
+          "src/img/DAVIDB-librairies.jpg",
+          "src/img/DAVIDB-P1.png",
+          "src/img/DAVIDB-P2.png",
+          "src/img/Stanislas-post.jpg"
+        ],
+        text: "Travail de communication visuelle pour le compte instagram de la maison d’édition l’Association. <a href='https://www.instagram.com/editions_lassociation/' target='_blank' rel='noreferrer'>https://www.instagram.com/editionsassociation/</a><br><br> Création de visuels avec Photoshop et Illustrator pour la promotion des livres et des événements de la maison d’édition."
+      }
+    };
+
+    /* Références DOM */
+    const listItems = document.querySelectorAll("#project-list li");
+  const gdImage = document.getElementById("gd-image");
+  const gdCaption = document.getElementById("gd-caption");
+  const gdPrev = document.getElementById("gd-prev");
+  const gdNext = document.getElementById("gd-next");
+
+  const mobilePanel = document.getElementById("mobile-panel");
+  const mpImageEl = document.getElementById("mp-image"); // ✅ corrigé
+  const mpCaption = document.getElementById("mp-caption");
+  const mpPrevBtn = document.getElementById("mp-prev-btn");
+  const mpNextBtn = document.getElementById("mp-next-btn");
+
+  let currentProject = "typo";
+  let desktopIndex = 0;
+  let mobileIndex = 0;
+
+  function updateActiveList(projectKey){
+    listItems.forEach(li => li.classList.toggle("active", li.dataset.project === projectKey));
+  }
+
+  /* --- Desktop --- */
+  function loadDesktop(projectKey){
+    currentProject = projectKey;
+    desktopIndex = 0;
+    const p = projects[projectKey];
+    gdImage.src = p.images[desktopIndex];
+    gdCaption.innerHTML = p.text;
+    updateActiveList(projectKey);
+  }
+
+  gdPrev.addEventListener("click", () => {
+    const imgs = projects[currentProject].images;
+    desktopIndex = (desktopIndex - 1 + imgs.length) % imgs.length;
+    gdImage.src = imgs[desktopIndex];
+  });
+
+  gdNext.addEventListener("click", () => {
+    const imgs = projects[currentProject].images;
+    desktopIndex = (desktopIndex + 1) % imgs.length;
+    gdImage.src = imgs[desktopIndex];
+  });
+
+  /* --- Mobile --- */
+  function showMobilePanelFor(projectKey, listItem){
+    const p = projects[projectKey];
+    mobileIndex = 0;
+    mpImageEl.src = p.images[mobileIndex];
+    mpCaption.innerHTML = p.text;
+    listItem.insertAdjacentElement("afterend", mobilePanel);
+    mobilePanel.style.display = "block";
+    updateActiveList(projectKey);
+    currentProject = projectKey;
+    window.scrollTo({ top: listItem.offsetTop - 20, behavior: "smooth" });
+  }
+
+  function hideMobilePanel(){
+    mobilePanel.style.display = "none";
+  }
+
+  mpPrevBtn.addEventListener("click", () => {
+    const imgs = projects[currentProject].images;
+    mobileIndex = (mobileIndex - 1 + imgs.length) % imgs.length;
+    mpImageEl.src = imgs[mobileIndex];
+  });
+
+  mpNextBtn.addEventListener("click", () => {
+    const imgs = projects[currentProject].images;
+    mobileIndex = (mobileIndex + 1) % imgs.length;
+    mpImageEl.src = imgs[mobileIndex];
+  });
+
+  /* --- Sélection projet --- */
+  function onProjectClick(){
+    const key = this.dataset.project;
+    if(window.innerWidth <= 768){
+      const isAfter = this.nextElementSibling === mobilePanel;
+      if(isAfter && mobilePanel.style.display !== "none"){
+        hideMobilePanel();
+        this.classList.remove("active");
+      } else {
+        showMobilePanelFor(key, this);
+      }
+    } else {
+      loadDesktop(key);
+    }
+  }
+
+  listItems.forEach(li => {
+    li.addEventListener("click", onProjectClick);
+    li.addEventListener("keypress", (ev) => {
+      if(ev.key === "Enter" || ev.key === " "){ ev.preventDefault(); li.click(); }
+    });
+  });
+
+  function init(){
+    if(window.innerWidth <= 768){
+      hideMobilePanel();
+    } else {
+      loadDesktop(currentProject);
+      hideMobilePanel();
+    }
+  }
+  init();
+
+  window.addEventListener("resize", () => {
+    if(window.innerWidth <= 768){
+      hideMobilePanel();
+    } else {
+      loadDesktop(currentProject);
+      hideMobilePanel();
+    }
+  });
+  </script>
+</body>
+</html>
+
