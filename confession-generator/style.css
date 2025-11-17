@@ -1,0 +1,64 @@
+/* --- Styles généraux --- */
+body {
+  margin: 0;
+  font-family: "Poppins", Arial, sans-serif;
+  background: radial-gradient(circle at center, #2b1055, #7597de);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+/* --- Conteneur principal --- */
+.container {
+  max-width: 90%;
+  width: 400px;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+/* --- Titre --- */
+h1 {
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  letter-spacing: 1px;
+}
+
+/* --- Bouton --- */
+#generate-btn {
+  background-color: #ff6ec7;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#generate-btn:hover {
+  background-color: #ff9ee0;
+  transform: scale(1.05);
+}
+
+/* --- Phrase générée --- */
+#quote {
+  margin-top: 30px;
+  font-size: 1.2em;
+  line-height: 1.5;
+  color: #f0f0f0;
+  min-height: 60px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* --- Apparition de la phrase --- */
+#quote.show {
+  opacity: 1;
+}
