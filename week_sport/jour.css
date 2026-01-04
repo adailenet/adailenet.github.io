@@ -1,0 +1,100 @@
+@font-face {
+    font-family: "Monsieur";
+    src: url(src/typo/MonsieurLaDoulaise-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Hankenlight";
+    src: url(src/typo/HankenGrotesk-ExtraLight.ttf);
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: "Hankenregular";
+    src: url(src/typo/HankenGrotesk-Regular.ttf);
+    font-weight: 400;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Hankenregular", sans-serif;
+    background: #e3afc5;
+    background: radial-gradient(circle, rgba(227, 175, 197, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    color: #000000;
+}
+
+h1 {
+    font-family: "Monsieur", cursive;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    user-select: none;
+}
+
+h3 {
+    font-family: "Hankenlight", cursive;
+    font-weight: 400;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    user-select: none;
+}
+
+p {
+    text-align: center;
+    font-family: "Hankenregular";
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    line-height: 1.5em;
+}
+
+menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    text-align: center;
+    font-family: "Hankenregular";
+    font-size: 1em;
+    margin-bottom: 8px;
+    line-height: 1.5em;
+    list-style-type: none;
+}
+
+img {
+    display: block;
+    margin: 20px auto;
+    width: 150px;
+    height: auto;
+}
+
+#back {
+    text-align: center;
+    font-family: "Monsieur";
+    color: white;
+    font-size: 1.5em;
+    margin-top: 20px;
+    user-select: none;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    user-select: none;
+}
+
+#link {
+    text-decoration: underline;
+    color: white;
+    font-weight: bold;
+}
