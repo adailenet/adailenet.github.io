@@ -1,0 +1,51 @@
+@font-face {
+    font-family: "murmure";
+    src: url(../fonts/le-murmure.otf);
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "instrument";
+    src: url(../fonts/InstrumentSerif-Regular.ttf);
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "instrument";
+    src: url(../fonts/InstrumentSerif-Italic.ttf);
+    font-style: italic;
+}
+
+body {
+    /* margin: 20px;*/
+     padding: 20px;
+     background-color: #BF3131;
+}
+
+a {
+    text-decoration: none;
+
+}
+
+h5 {
+    text-align: center;
+    font-family: "instrument";
+    font-style: italic;
+    font-size: 1.5em;
+    color: #EAD196;
+
+    margin-top: 10vh;
+}
+
+h5:hover {
+    cursor: pointer;
+    color: #EEEEEE;
+}
+
+p {
+    text-align: justify;
+    font-family: "instrument";
+    font-style: normal;
+    font-size: 2em;
+    color: #7D0A0A;
+}
