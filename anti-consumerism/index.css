@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    padding: 50px;
+
+    background-color: #EBE8DB;
+    overflow: auto;
+}
+
+h3 {
+    text-align: center;
+    margin : 50px;
+}
+
+a {
+    text-decoration: none;
+    color: #D76C82;
+}
+
+.tel:hover {
+    color: #B03052;
+    font-weight:600;
+}
+
+.ext:hover {
+    font-style: italic;
+    color: #B03052;
+}
+
+.intro {
+    font-weight: 600;
+}
+
+.liste {
+    text-align: justify;
+    margin-left : 25%;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.video {
+    text-align: center;
+    width: 100%;
+    margin-top: 5px;
+}
