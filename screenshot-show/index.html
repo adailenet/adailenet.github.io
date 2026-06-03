@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Showcase</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="video-container">
+  <video id="main-video" autoplay></video>
+
+  <div id="toggle-list">Liste</div>
+
+  <div id="sidebar">
+    <h2>Sélection</h2>
+    <div id="thumb-list"></div>
+  </div>
+</div>
+
+<script>
+  const videos = [
+    { id: 1, src: "../src/1.mp4", thumb: "../src/thumb1.jpg" },
+    { id: 2, src: "../src/2.mp4", thumb: "../src/thumb2.jpg" },
+    { id: 3, src: "../src/3.mp4", thumb: "../src/thumb3.jpg" },
+    { id: 3, src: "../src/4.mp4", thumb: "../src/thumb4.jpg" },
+    { id: 3, src: "../src/5.mp4", thumb: "../src/thumb5.jpg" },
+    { id: 3, src: "../src/experimentations.mp4", thumb: "../src/thumbexp.jpg" }
+  ];
+
+  const videoElement = document.getElementById("main-video");
+  const thumbList = document.getElementById("thumb-list");
+  const sidebar = document.getElementById("sidebar");
+  const toggleButton = document.getElementById("toggle-list");
+
+  let currentIndex = 0;
+
+  function loadVideo(index) {
+    currentIndex = index;
+    videoElement.src = videos[index].src;
+    videoElement.play();
+  }
+
+  videoElement.addEventListener("ended", () => {
+    currentIndex = (currentIndex + 1) % videos.length;
+    loadVideo(currentIndex);
+  });
+
+  videos.forEach((v, index) => {
+    const img = document.createElement("img");
+    img.src = v.thumb;
+    img.className = "thumb";
+    img.onclick = () => {
+      loadVideo(index);
+      sidebar.classList.remove("open");
+    };
+    thumbList.appendChild(img);
+  });
+
+  toggleButton.onclick = () => {
+    sidebar.classList.toggle("open");
+  };
+
+  loadVideo(0);
+</script>
+
+</body>
+</html>
